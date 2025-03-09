@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Devin's Badges Generator</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="template" class="badge-container">
+      <p class="badge-info"></p>
+      <div class="badge">
+        <a href="#\" class="badge-link enabled">
+          <img class="badge-image" />
+        </a>
+        <br />
+        <br />
+        <button class="markdown-copy">Copy as Markdown</button>
+      </div>
+      <br />
+    </div>
+
+    <div id="selectors">
+      <label for="services">Choose a service:</label>
+      <select id="services" name="services">
+        <option value="unselected" id="remove_on_select" selected>
+          --Choose a service--
+        </option>
+        <!--Services-->
+      </select>
+
+      <label for="link">Link:</label>
+
+      <input type="text" id="link" name="link" />
+    </div>
+
+    <div id="badges"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
