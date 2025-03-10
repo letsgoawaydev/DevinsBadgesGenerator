@@ -85,26 +85,29 @@ link.addEventListener("keyup", (ev) => {
 });
 
 function updateLinks() {
+    let url = getURL();
+    if (url == "") url = "#\\";
     document.querySelectorAll(".badge-link").forEach((a) => {
-        if (link.value == '') {
-            a.href = "#\\";
-            return;
-        }
+        a.href = url;
+    })
+}
+
+function getURL() {
+    if (link.value == '') {
+        return "";
+    }
+    try {
+        return new URL(link.value).toString();
+    }
+    catch {
         try {
-            a.href = new URL(link.value).toString();
-            return;
+            return new URL("http:" + link.value).toString();
+           
         }
         catch {
-            try {
-                a.href = new URL("http:" + link.value).toString();
-                return;
-            }
-            catch {
-                a.href = "#\\";
-                return;
-             }
+            return "";
         }
-    })
+    }
 }
 
 serviceSelector.addEventListener("change", (ev) => {
@@ -130,8 +133,8 @@ serviceSelector.addEventListener("change", (ev) => {
             if (markdownButton instanceof HTMLButtonElement) {
                 markdownButton.addEventListener("click",(ev)=>{
                     // todo
-                    navigator.clipboard.writeText(`[![${s}](${url.url})](${})`)
-                })
+                    navigator.clipboard.writeText(`[![${url.service}](${url.url})](${getURL()})`)
+                });
             }
 
             badges.appendChild(badge);
